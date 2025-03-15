@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: digitalMonyHouse-db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - dmh-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.0
+    container_name: keycloak-digitalMonyHouse
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KC_DB: mysql
+      KC_DB_URL_HOST: mysql
+      KC_DB_URL_DATABASE: digitalMonyHouse-db
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
+      KEYCLOAK_LOGLEVEL: DEBUG
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak-data:/opt/jboss/keycloak/standalone/data
+    networks:
+      - dmh-network
+    depends_on:
+      - mysql 
+
+networks:
+  dmh-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
+  keycloak-data:
+    driver: local
