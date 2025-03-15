@@ -22,3 +22,22 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Ignorar .idea
+.idea/
+
+# Ignorar .settings
+.settings/
+
+# Ignorar .classpath
+.classpath
+
+# Ignorar .project
+
+.project
+
+# Ignorar .metadata
+.metadata/
+
+# Ignorar .DS_Store
+.DS_Store
