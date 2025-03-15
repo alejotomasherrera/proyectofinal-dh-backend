@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: service-api-gateway
+  server:
+    port: 8081
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'   # Exponiendo todos los endpoints de actuator
+  info:
+    env:
+      enabled: true    # Habilitar la información del entorno
+  health:
+    show-details: always  # Mostrar detalles completos en el endpoint health
+
+# Configuración de rutas para el API Gateway

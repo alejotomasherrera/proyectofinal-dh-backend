@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   mysql:
@@ -34,8 +34,47 @@ services:
       - keycloak-data:/opt/jboss/keycloak/standalone/data
     networks:
       - dmh-network
+    command: start-dev
     depends_on:
-      - mysql 
+      - mysql
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
+    container_name: elasticsearch-digitalMonyHouse
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=admin
+      - xpack.security.enabled=false  # Deshabilita la seguridad (incluyendo HTTPS)
+    ports:
+      - "9200:9200"
+    networks:
+      - dmh-network
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.16.5
+    container_name: logstash
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+    ports:
+      - "5044:5044"
+    networks:
+      - dmh-network
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - C:/Users/Alejo/Documents/proyectofinal-dh-backend/logs:/logs
+
+  # Kibana
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.17.3
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - dmh-network
 
 networks:
   dmh-network:
@@ -45,4 +84,6 @@ volumes:
   mysql-data:
     driver: local
   keycloak-data:
+    driver: local
+  elasticsearch-data:
     driver: local

@@ -1,7 +1,8 @@
-package digitalMonyHouse.config_server;
+package com.cursobackend.configServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootTest
 class ConfigServerApplicationTests {

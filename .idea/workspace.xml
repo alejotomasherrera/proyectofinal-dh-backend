@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="baf78542-c5a5-4189-9d18-7397ff63ee4e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/proyectofinal-dh-backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/java/digitalMonyHouse/config_server/ConfigServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/test/java/digitalMonyHouse/config_server/ConfigServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/src/main/java/digitalMonyHouse/servicio_eurekaServer/ServicioEurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/java/digitalMonyHouse/servicio_eurekaServer/ServicioEurekaServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2uKsARABB2RsVzhDzKKCeUFCfZo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ConfigServerApplication.executor": "Run",
+    "Application.CuentaServiceApplication.executor": "Run",
+    "Application.ServicioEurekaServerApplication.executor": "Run",
+    "Maven.config-server [-U,clean,install].executor": "Run",
+    "Maven.config-server [clean,install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Alejo/Documents/proyectofinal-dh-backend/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend\servicio-usuarios\src\main\java\digitalMonyHouse\servicio_usuarios" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend" />
+      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend\servicio-transacciones\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn -U clean install" />
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="CuentaServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.cuenta_service.CuentaServiceApplication" />
+      <module name="cuenta-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="digitalMonyHouse.cuenta_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioEurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.servicio_eurekaServer.ServicioEurekaServerApplication" />
+      <module name="servicio-eurekaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="digitalMonyHouse.servicio_eurekaServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CuentaServiceApplication" />
+        <item itemvalue="Application.ServicioEurekaServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="baf78542-c5a5-4189-9d18-7397ff63ee4e" name="Changes" comment="" />
+      <created>1742008457070</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742008457070</updated>
+    </task>
+    <servers />
+  </component>
+</project>
