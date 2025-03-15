@@ -20,8 +20,8 @@ services:
     image: quay.io/keycloak/keycloak:24.0.0
     container_name: keycloak-digitalMonyHouse
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
       KC_DB: mysql
       KC_DB_URL_HOST: mysql
       KC_DB_URL_DATABASE: digitalMonyHouse-db
@@ -31,7 +31,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - keycloak-data:/opt/jboss/keycloak/standalone/data
+      - keycloak-data:/opt/keycloak/data
     networks:
       - dmh-network
     command: start-dev
@@ -44,7 +44,7 @@ services:
     environment:
       - discovery.type=single-node
       - ELASTIC_PASSWORD=admin
-      - xpack.security.enabled=false  # Deshabilita la seguridad (incluyendo HTTPS)
+      - xpack.security.enabled=false
     ports:
       - "9200:9200"
     networks:
