@@ -2,35 +2,38 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="servicio-eurekaServer" />
+        <module name="auth-service" />
         <module name="service-api-gateway" />
+        <module name="configServer" />
+        <module name="servicio-eurekaServer" />
       </profile>
-      <profile name="Annotation profile for servicio-usuarios" enabled="true">
+      <profile name="Annotation profile for servicio-tarjetas" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
+        <processorPath>
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
-        <module name="servicio-usuarios" />
         <module name="servicio-transacciones" />
+        <module name="servicio-tarjetas" />
+        <module name="servicio-usuarios" />
         <module name="cuenta-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="config-server" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="config-server" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
+      <module name="configServer" options="-parameters" />
       <module name="cuenta-service" options="-parameters" />
       <module name="service-api-gateway" options="-parameters" />
       <module name="servicio-eurekaServer" options="-parameters" />
+      <module name="servicio-tarjetas" options="-parameters" />
       <module name="servicio-transacciones" options="-parameters" />
       <module name="servicio-usuarios" options="-parameters" />
     </option>

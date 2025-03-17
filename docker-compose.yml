@@ -76,6 +76,18 @@ services:
     networks:
       - dmh-network
 
+  # Redis
+  redis:
+    image: redis:7.0
+    container_name: redis-digitalMonyHouse
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - dmh-network
+    volumes:
+      - redis-data:/data
+
 networks:
   dmh-network:
     driver: bridge
@@ -86,4 +98,6 @@ volumes:
   keycloak-data:
     driver: local
   elasticsearch-data:
+    driver: local
+  redis-data:
     driver: local

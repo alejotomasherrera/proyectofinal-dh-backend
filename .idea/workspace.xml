@@ -4,49 +4,149 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="baf78542-c5a5-4189-9d18-7397ff63ee4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/proyectofinal-dh-backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="96150659-57b9-467a-a199-beb5d4a28512" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/AuthServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/application/port/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/application/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/application/service/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/config/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/domain/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/exception/APIErrorEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/exception/ExceptionHandlerGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/exception/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/infrastructure/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/infrastructure/web/dto/response/TokenResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/infrastructure/web/dto/response/UserLoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/infrastructure/web/dto/response/UserRegisteredDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/digitalMoneyHouse/auth_service/infrastructure/web/dto/response/UserRegistrationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/application/port/AccountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/application/service/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/application/utils/AccountUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/application/utils/palabras_generadas.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/domain/model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/exception/APIErrorEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/exception/ExceptionHandlerGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/exception/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/feign/cardsClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/request/AccountDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/request/AccountSearchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/response/AccountCreatedDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/response/ActivityDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/response/CardDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/response/UpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/infrastructure/web/response/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/config/GatewayConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/filter/post/AuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/service/RouterValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/util/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/application/port/CardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/application/service/CardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/domain/models/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/APIErrorEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/CardAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/ExceptionHandlerGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/infrastructure/controllers/CardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/infrastructure/feign/FeignConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/infrastructure/feign/UserClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/infrastructure/web/request/CardDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas/infrastructure/web/response/CardCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/application/port/ActivityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/application/services/ActivityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/domain/model/Activity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/exception/APIErrorEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/exception/ExceptionHandlerGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/exception/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/controllers/ActivityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/feign/AccountClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/feign/CardClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/feign/FeignConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/request/AccountSearchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/request/ActivityDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/request/CardDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/request/LoadMoneyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/request/TransferRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/response/AccountDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/infrastructure/web/response/AccountSummaryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/application/port/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/application/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/domain/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/exception/APIErrorEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/exception/ExceptionHandlerGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/exception/InternalServerErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/feign/AccountServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/feign/FeignConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/web/response/AccountCreatedDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/web/response/AccountToCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/web/response/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/web/response/UserRegisteredDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/infrastructure/web/response/UserRegistrationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/java/digitalMonyHouse/config_server/ConfigServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/test/java/digitalMonyHouse/config_server/ConfigServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cuenta-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/CuentaServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta-service/src/main/java/digitalMonyHouse/cuenta_service/CuentaServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cuenta-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cuenta-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuenta-service/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/logback-spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/ServiceApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-api-gateway/src/main/java/digitalMonyHouse/service_api_gateway/ServiceApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-api-gateway/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-api-gateway/src/main/resources/logback-spring.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/src/main/java/digitalMonyHouse/servicio_eurekaServer/ServicioEurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/java/digitalMonyHouse/servicio_eurekaServer/ServicioEurekaServerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-eurekaServer/src/main/resources/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servicio-transacciones/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/ServicioTransaccionesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/src/main/java/digitalMonyHouse/servicio_transacciones/ServicioTransaccionesApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/main/resources/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-transacciones/src/test/java/digitalMonyHouse/servicio_transacciones/ServicioTransaccionesApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-transacciones/src/test/java/digitalMonyHouse/servicio_transacciones/ServicioTransaccionesApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servicio-usuarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/ServicioUsuariosApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios/ServicioUsuariosApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/main/resources/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicio-usuarios/src/test/java/digitalMonyHouse/servicio_usuarios/ServicioUsuariosApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/servicio-usuarios/src/test/java/digitalMonyHouse/servicio_usuarios/ServicioUsuariosApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,9 +155,10 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
   "associatedIndex": 8
 }]]></component>
-  <component name="ProjectId" id="2uKsARABB2RsVzhDzKKCeUFCfZo" />
+  <component name="ProjectId" id="2uRzbVE6RLTVtAWeUnTozvxvGar" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -67,34 +168,35 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ConfigServerApplication.executor": "Run",
+    "Application.AuthServiceApplication.executor": "Run",
     "Application.CuentaServiceApplication.executor": "Run",
+    "Application.ServiceApiGatewayApplication.executor": "Run",
     "Application.ServicioEurekaServerApplication.executor": "Run",
-    "Maven.config-server [-U,clean,install].executor": "Run",
-    "Maven.config-server [clean,install].executor": "Run",
+    "Application.ServicioTarjetasApplication.executor": "Run",
+    "Application.ServicioTransaccionesApplication.executor": "Run",
+    "Application.ServicioUsuariosApplication.executor": "Run",
+    "Maven.servicio-tarjetas [clean,install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Alejo/Documents/proyectofinal-dh-backend/servicio-usuarios/src/main/java/digitalMonyHouse/servicio_usuarios"
+    "last_opened_file_path": "C:/Users/Alejo/Documents/proyectofinal-dh-backend/servicio-tarjetas/src/main/java/digitalhousemoney/servicio_tarjetas",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend\servicio-usuarios\src\main\java\digitalMonyHouse\servicio_usuarios" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend" />
-      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend\servicio-transacciones\src\main\resources" />
+      <recent name="C:\Users\Alejo\Documents\proyectofinal-dh-backend\servicio-tarjetas\src\main\java\digitalhousemoney\servicio_tarjetas" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn -U clean install" />
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ServicioTarjetasApplication">
     <configuration name="CuentaServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.cuenta_service.CuentaServiceApplication" />
       <module name="cuenta-service" />
@@ -108,12 +210,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServicioEurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.servicio_eurekaServer.ServicioEurekaServerApplication" />
-      <module name="servicio-eurekaServer" />
+    <configuration name="ServiceApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.service_api_gateway.ServiceApiGatewayApplication" />
+      <module name="service-api-gateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="digitalMonyHouse.servicio_eurekaServer.*" />
+          <option name="PATTERN" value="digitalMonyHouse.service_api_gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioTarjetasApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalhousemoney.servicio_tarjetas.ServicioTarjetasApplication" />
+      <module name="servicio-tarjetas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="digitalhousemoney.servicio_tarjetas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioTransaccionesApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.servicio_transacciones.ServicioTransaccionesApplication" />
+      <module name="servicio-transacciones" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="digitalMonyHouse.servicio_transacciones.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServicioUsuariosApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="digitalMonyHouse.servicio_usuarios.ServicioUsuariosApplication" />
+      <module name="servicio-usuarios" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="digitalMonyHouse.servicio_usuarios.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,19 +264,22 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ServicioTarjetasApplication" />
+        <item itemvalue="Application.ServicioTransaccionesApplication" />
+        <item itemvalue="Application.ServicioUsuariosApplication" />
+        <item itemvalue="Application.ServiceApiGatewayApplication" />
         <item itemvalue="Application.CuentaServiceApplication" />
-        <item itemvalue="Application.ServicioEurekaServerApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="baf78542-c5a5-4189-9d18-7397ff63ee4e" name="Changes" comment="" />
-      <created>1742008457070</created>
+      <changelist id="96150659-57b9-467a-a199-beb5d4a28512" name="Changes" comment="" />
+      <created>1742226249835</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1742008457070</updated>
+      <updated>1742226249835</updated>
     </task>
     <servers />
   </component>
