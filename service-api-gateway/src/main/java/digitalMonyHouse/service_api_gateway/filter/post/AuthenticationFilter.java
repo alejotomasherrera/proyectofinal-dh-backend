@@ -39,8 +39,10 @@ public class AuthenticationFilter implements GatewayFilter {
             final String token = this.getAuthHeader(request);
 
             if (jwtUtil.isInvalid(token)) {
+                System.out.println("Token inválido: " + token);
                 return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
             }
+
 
             this.populateRequestWithHeaders(exchange, token);
         }
@@ -58,8 +60,11 @@ public class AuthenticationFilter implements GatewayFilter {
 
     private String getAuthHeader(ServerHttpRequest request) {
         var header = request.getHeaders().getOrEmpty("Authorization").get(0);
-        return header.replace(TOKEN_PREFIX,"").trim();
+        System.out.println("Authorization Header: " + header);
+        System.out.println("Expected Prefix: " + TOKEN_PREFIX);
+        return header.replace(TOKEN_PREFIX, "").trim();
     }
+
 
     private boolean isAuthMissing(ServerHttpRequest request) {
         return !request.getHeaders().containsKey("Authorization");
@@ -73,10 +78,13 @@ public class AuthenticationFilter implements GatewayFilter {
 
     private void populateRequestWithHeaders(ServerWebExchange exchange, String token) {
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
+        System.out.println("Claims obtenidos: " + claims);
+
         exchange.getRequest().mutate()
                 .header("id", String.valueOf(claims.get("id")))
                 .header("roles", String.valueOf(claims.get("roles")))
                 .header("tenantId", String.valueOf(claims.get("tenantId")))
                 .build();
     }
+
 }

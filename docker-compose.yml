@@ -12,7 +12,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./db/mysql_data:/var/lib/mysql
     networks:
       - dmh-network
 
@@ -65,6 +65,65 @@ services:
       - dmh-network
     volumes:
       - redis-data:/data
+
+# Dockerización del backend
+  auth-service:
+    build:
+      context: ./auth-service
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./auth-service:/usr/src/app
+
+  config-server:
+    build:
+      context: ./configServer
+    ports:
+      - "8888:8888"
+
+  cuenta-service:
+    build:
+      context: ./cuenta-service
+    ports:
+      - "8084:8084"
+    volumes:
+      - ./cuenta-service:/usr/src/app
+
+  service-api-gateway:
+    build:
+      context: ./service-api-gateway
+    ports:
+      - "8081:8081"
+
+  servicio-eurekaServer:
+    build:
+      context: ./servicio-eurekaServer
+    ports:
+      - "8761:8761"
+
+  servicio-tarjetas:
+    build:
+      context: ./servicio-tarjetas
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./servicio-tarjetas:/usr/src/app
+
+  servicio-transacciones:
+    build:
+      context: ./servicio-transacciones
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./servicio-transacciones:/usr/src/app
+
+  servicio-usuarios:
+    build:
+      context: ./servicio-usuarios
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./servicio-usuarios:/usr/src/app
 
 networks:
   dmh-network:

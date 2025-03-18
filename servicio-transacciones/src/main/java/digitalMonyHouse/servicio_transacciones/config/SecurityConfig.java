@@ -51,7 +51,7 @@ public class SecurityConfig {
                 throws ServletException, IOException {
 
             String token = request.getHeader(SECRET_HEADER_NAME);
-            System.out.println("Received Secret Token: " + token); // Debugging
+            System.out.println("Received Secret Token: " + token);
 
             if (SECRET_TOKEN.equals(token)) {
                 System.out.println("Secret token is valid, proceeding with request.");

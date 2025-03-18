@@ -64,14 +64,14 @@ public class GatewayConfig {
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/cards-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8087")) // URI del cards-server
+                        .uri("http://localhost:8086")) // URI del tarjetas service
                 // Ruta para el activities-server
                 .route("activities-server", r -> r.path("/activities-server/api/**")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/activities-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8086")) // URI del activities-server
+                        .uri("http://localhost:8085")) // URI del transacciones service
                 .build();
     }
 

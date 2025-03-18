@@ -5,8 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "servicio-tarjetas")
+@FeignClient(name = "servicio-tarjetas", url="http://localhost:8086/api")
 public interface CardClient {
-    @GetMapping("api/accounts/{userId}/cards/by-number/{cardNumber}")
+    @GetMapping("/accounts/{userId}/cards/by-number/{cardNumber}")
     CardDTO getCardByLastFourNumbers(@PathVariable("userId") Long userId, @PathVariable("cardNumber") String cardNumber);
 }

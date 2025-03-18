@@ -11,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +24,12 @@ public class ActivityService {
 
     private final CardClient cardClient;
     private final AccountClient accountClient;
+
+    public String getFormattedDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // Ajusta la zona horaria si es necesario
+        return dateFormat.format(new Date());
+    }
 
     public ActivityService(ActivityRepository activityRepository, CardClient cardClient, AccountClient accountClient) {
         this.activityRepository = activityRepository;
@@ -70,8 +78,8 @@ public class ActivityService {
         activity.setOrigin(updatedAccount.getAlias());
         activity.setDestination(updatedAccount.getAlias());
         activity.setCardId(card.getId());
-        activity.setType("LOAD MONEY FROM CARD");
-        activity.setDate(String.valueOf(new Date()));
+        activity.setType("Carga de dinero por tarjeta");
+        activity.setDate(getFormattedDate());
         activity.setDetail("Ingresaste desde tarjeta terminada en " + loadMoneyRequest.getCardNumber());
 
         Activity savedActivity = activityRepository.save(activity);
@@ -131,8 +139,8 @@ public class ActivityService {
         originActivity.setAmount(transferRequest.getAmount());
         originActivity.setOrigin(updatedOriginAccount.getAlias());
         originActivity.setDestination(updatedDestinationAccount.getAlias());
-        originActivity.setType("Transfer");
-        originActivity.setDate(new Date().toString());
+        originActivity.setType("Traferencia");
+        originActivity.setDate(getFormattedDate());
         originActivity.setDetail("Transferencia a " + transferRequest.getDestination());
 
         Activity savedOriginActivity = activityRepository.save(originActivity);
@@ -143,9 +151,9 @@ public class ActivityService {
         destinationActivity.setAmount(Math.abs(transferRequest.getAmount()));
         destinationActivity.setOrigin(updatedOriginAccount.getAlias());
         destinationActivity.setDestination(updatedDestinationAccount.getAlias());
-        destinationActivity.setType("Transfer");
-        destinationActivity.setDate(new Date().toString());
-        destinationActivity.setDetail("Recibiste transferencia desde " + originAccount.getAlias());
+        destinationActivity.setType("Traferencia");
+        destinationActivity.setDate(getFormattedDate());
+        destinationActivity.setDetail("Has recibido una transferencia de " + originAccount.getAlias());
 
         activityRepository.save(destinationActivity);
 

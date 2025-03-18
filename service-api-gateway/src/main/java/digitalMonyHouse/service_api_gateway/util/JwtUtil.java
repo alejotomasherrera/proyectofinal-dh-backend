@@ -46,7 +46,7 @@ public class JwtUtil {
     }
 
     private boolean isTokenInRedis(String token) {
-        System.out.println(redisTemplate.hasKey(token));
+        System.out.println("true or false from redis:" + redisTemplate.hasKey(token));
         return redisTemplate.hasKey(token);
     }
 }
