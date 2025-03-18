@@ -16,28 +16,6 @@ services:
     networks:
       - dmh-network
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:24.0.0
-    container_name: keycloak-digitalMonyHouse
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_DB: mysql
-      KC_DB_URL_HOST: mysql
-      KC_DB_URL_DATABASE: digitalMonyHouse-db
-      KC_DB_USERNAME: admin
-      KC_DB_PASSWORD: admin
-      KEYCLOAK_LOGLEVEL: DEBUG
-    ports:
-      - "8080:8080"
-    volumes:
-      - keycloak-data:/opt/keycloak/data
-    networks:
-      - dmh-network
-    command: start-dev
-    depends_on:
-      - mysql
-
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
     container_name: elasticsearch-digitalMonyHouse
@@ -94,8 +72,6 @@ networks:
 
 volumes:
   mysql-data:
-    driver: local
-  keycloak-data:
     driver: local
   elasticsearch-data:
     driver: local
