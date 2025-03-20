@@ -63,7 +63,6 @@ public class AccountController {
     @PutMapping("/accounts/{userId}/balance")
     public ResponseEntity<AccountDTO> updateAccountBalance(@PathVariable Long userId, @RequestBody Double amount) {
         try {
-            System.out.println("Llegó al controlador");
             Account updatedAccount = accountService.updateAccountBalance(userId, amount);
             return new ResponseEntity<>(new AccountDTO(updatedAccount), HttpStatus.OK);
         } catch (ResourceNotFoundException e) {
