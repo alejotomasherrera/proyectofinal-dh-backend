@@ -108,29 +108,26 @@ public class ActivityService {
         AccountSearchRequest searchRequest = new AccountSearchRequest();
         String destination = transferRequest.getDestination();
 
-        // Identificar si el destino es CVU o alias
-        if (destination.matches("\\d+")) { // Si es solo dígitos, asumimos que es CVU
+
+        if (destination.matches("\\d+")) {
             searchRequest.setCvu(destination);
         } else {
             searchRequest.setAlias(destination);
         }
 
-        // Obtener la cuenta del destinatario usando CVU o alias
         ResponseEntity<AccountDTO> responseEntity = accountClient.getAccountByCvuOrAlias(searchRequest);
         AccountDTO destinationAccount = responseEntity.getBody();
         if (destinationAccount == null) {
             throw new ResourceNotFoundException("Cuenta no encontrada para el alias o CVU proporcionado.");
         }
-
-        // Validar fondos suficientes
-        if (originAccount.getBalance() < transferRequest.getAmount()) {
+        System.out.println("Fondo actual1: " + originAccount.getBalance());
+        if (originAccount.getBalance() < transferRequest.getAmount() & originAccount.getBalance() > 0) {
+            System.out.println("Fondo actual2adentro del if: " + originAccount.getBalance());
             throw new IllegalArgumentException("Fondos insuficientes");
         }
 
-        // Actualizar el balance de la cuenta de origen (restar)
+        // Actualizar los saldos de las cuentas y obtener las cuentas actualizadas en el momento de la transferencia
         AccountDTO updatedOriginAccount = accountClient.updateAccountBalance(userId, transferRequest.getAmount());
-
-        // Actualizar el balance de la cuenta de destino (sumar)
         AccountDTO updatedDestinationAccount = accountClient.updateAccountBalance(Long.valueOf(destinationAccount.getUserId()), Math.abs(transferRequest.getAmount()));
 
         // Guardar la actividad para el **usuario de origen**
