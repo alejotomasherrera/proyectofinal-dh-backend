@@ -4,6 +4,7 @@ package digitalmoneyhouse.servicio_test_ui.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Cards {
     private WebDriver driver;
@@ -55,6 +56,12 @@ public class Cards {
 
     public void submitCard() {
         driver.findElement(submitButton).click();
+    }
+
+    public void deleteCard(int fourDigits) {
+        By deleteButton = By.xpath("//li[contains(., 'terminada en " + fourDigits + "')]//button[contains(text(), 'Eliminar')]");
+        WebElement deleteBtn = driver.findElement(deleteButton);
+        deleteBtn.click();
     }
 
     // Catch error

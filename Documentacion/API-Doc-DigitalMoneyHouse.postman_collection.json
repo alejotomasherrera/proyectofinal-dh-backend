@@ -1,0 +1,690 @@
+{
+	"info": {
+		"_postman_id": "e262a51f-66e4-43f6-9d8a-1d3f74f6247a",
+		"name": "API-Doc-DigitalMoneyHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27106849"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3Nzg4OCwiZXhwIjoxNzQyNjc5Njg4fQ.SR_IbCYrg3NQjDdZJ3992-nj31KBurHXkh02rY_RW8s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"alejotomasherrera@hotmail.com\",\r\n  \"password\": \"Alejo123#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth-server/api/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth-server",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3NzY2MiwiZXhwIjoxNzQyNjc5NDYyfQ.kNyG9S7X6FW9WKrua6zPPqqDJxvo1aEe65RKnv9Hvn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3NzY2MiwiZXhwIjoxNzQyNjc5NDYyfQ.kNyG9S7X6FW9WKrua6zPPqqDJxvo1aEe65RKnv9Hvn8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth-server/api/logout",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth-server",
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Testeando\",\r\n  \"lastName\": \"Testeando\",\r\n  \"email\": \"Testeando@example.com\",\r\n  \"password\": \"password123\",\r\n  \"phone\": \"1234567890\",\r\n  \"dni\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users-server/api/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users-server",
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3NzY2MiwiZXhwIjoxNzQyNjc5NDYyfQ.kNyG9S7X6FW9WKrua6zPPqqDJxvo1aEe65RKnv9Hvn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/users-server/api/user/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users-server",
+						"api",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3NzY2MiwiZXhwIjoxNzQyNjc5NDYyfQ.kNyG9S7X6FW9WKrua6zPPqqDJxvo1aEe65RKnv9Hvn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Testeando\",\r\n  \"lastName\": \"Testeando\",\r\n  \"email\": \"Testeando@example.com\",\r\n  \"password\": \"otropasswordupdate.\",\r\n  \"phone\": \"1234567890\",\r\n  \"dni\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users-server/api/users/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users-server",
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAccount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/accounts-server/api/accounts/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts-server",
+						"api",
+						"accounts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Activities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/activities-server/api/1/activty",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"activities-server",
+						"api",
+						"1",
+						"activty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Activities Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/activities-server/api/1/activty",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"activities-server",
+						"api",
+						"1",
+						"activty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserCards",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cards-server/api/accounts/1/cards",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cards-server",
+						"api",
+						"accounts",
+						"1",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserCard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/accounts-server/api/accounts/1/cards/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts-server",
+						"api",
+						"accounts",
+						"1",
+						"cards",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserCard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cards-server/api/accounts/1/cards/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cards-server",
+						"api",
+						"accounts",
+						"1",
+						"cards",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUserCard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cards-server/api/accounts/1/cards",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cards-server",
+						"api",
+						"accounts",
+						"1",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createNewDeposit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 25000,\r\n  \"cardNumber\": \"1234567812345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/activities-server/api/accounts/1/transferences",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"activities-server",
+						"api",
+						"accounts",
+						"1",
+						"transferences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createTransferActivity",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Transfer\",\r\n  \"amount\": -5000,\r\n  \"origin\": \"un.alias.valido\",\r\n  \"destination\": \"un.alias.valido\",\r\n  \"detail\": \"Pago de servicios\",\r\n  \"cardId\": \"card12345\",\r\n  \"date\": \"2025-03-22T19:00:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/activities-server/api/accounts/1/transfer",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"activities-server",
+						"api",
+						"accounts",
+						"1",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserRecentActivities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhbGVqb3RvbWFzaGVycmVyYUBob3RtYWlsLmNvbSIsImlhdCI6MTc0MjY3ODA4OSwiZXhwIjoxNzQyNjc5ODg5fQ.FprwTCBeYW9upV50rJ07d-8HycxSifbNAgUQaIHuHzM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Secret-Token",
+						"value": "from-gateway",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/activities-server/api/1/transferences?_limit=10",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"activities-server",
+						"api",
+						"1",
+						"transferences"
+					],
+					"query": [
+						{
+							"key": "_limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081",
+			"type": "default"
+		}
+	]
+}

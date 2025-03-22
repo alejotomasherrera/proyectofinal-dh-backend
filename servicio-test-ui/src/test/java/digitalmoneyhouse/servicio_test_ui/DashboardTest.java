@@ -10,10 +10,13 @@ import digitalmoneyhouse.servicio_test_ui.page.Login;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.openqa.selenium.By;
 
 public class DashboardTest {
     private WebDriver driver;
@@ -41,6 +44,10 @@ public class DashboardTest {
         login.ingresarCorreo("alejotomasherrera@hotmail.com");
         login.ingresarContrasena("Alejo123#");
         login.clicIngresar();
+
+        // Esperar hasta que la URL cambie a la página principal
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlToBe("http://localhost:3000/"));
     }
 
     @Test
@@ -54,9 +61,13 @@ public class DashboardTest {
         dashboard = new Dashboard(driver);
 
         // Verificar elementos del Dashboard
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increased wait time
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(), 'Dinero disponible')]")));
         boolean dineroDisponibleVisible = dashboard.isDineroDisponibleDisplayed();
         test.log(dineroDisponibleVisible ? Status.PASS : Status.FAIL, "El elemento 'Dinero Disponible' está visible.");
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(., 'Hola, Alejo Herrera')]")));
         boolean holaVisible = dashboard.isHolaDisplayed();
         test.log(holaVisible ? Status.PASS : Status.FAIL, "El elemento 'Hola' está visible.");
 

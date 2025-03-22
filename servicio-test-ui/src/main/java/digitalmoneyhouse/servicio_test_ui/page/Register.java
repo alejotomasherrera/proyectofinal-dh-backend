@@ -2,6 +2,7 @@ package digitalmoneyhouse.servicio_test_ui.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Register {
     private WebDriver driver;
@@ -60,6 +61,10 @@ public class Register {
     // Metodo para hacer clic en el boton de ingresar
     public void clicIngresar() {
         driver.findElement(ingresar).click();
+    }
+
+    public WebElement getIngresarButton() {
+        return driver.findElement(ingresar);
     }
 
     public String obtenerMensajeError() {

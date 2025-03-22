@@ -41,3 +41,8 @@ replay_pid*
 # Ignorar .DS_Store
 .DS_Store
 /.idea/
+
+
+# Ignorar caprpeta db
+db/
+db/*

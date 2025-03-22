@@ -12,12 +12,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CardTest {
     private Cards cards;
     private WebDriver driver;
@@ -38,21 +41,31 @@ public class CardTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Iniciar sesión antes de cada prueba
+        // Iniciar sesión
         driver.get("http://localhost:3000/login");
         login = new Login(driver);
         login.ingresarCorreo("alejotomasherrera@hotmail.com");
         login.ingresarContrasena("Alejo123#");
         login.clicIngresar();
+
+        // Esperar hasta que la URL cambie a la página principal
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlToBe("http://localhost:3000/"));
     }
 
     @Test
+    @Order(1)
     public void testAddCard() {
         test = extent.createTest("Agregar Tarjeta", "Prueba para verificar la funcionalidad de agregar una tarjeta");
         test.log(Status.INFO, "Comienza el Test");
 
+        // Navegar a la página de tarjetas
         driver.get("http://localhost:3000/cards");
         test.log(Status.INFO, "Navegando a la página de tarjetas");
+
+        // Esperar hasta que el enlace "Mis Tarjetas" sea visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'Mis Tarjetas')]")));
 
         cards = new Cards(driver);
         cards.clickCardsLink();
@@ -79,6 +92,32 @@ public class CardTest {
         int fourDigits = 3456;
         boolean cardAdded = cardAdded(fourDigits);
         test.log(cardAdded ? Status.PASS : Status.FAIL, "La tarjeta con los últimos cuatro dígitos " + fourDigits + " fue agregada correctamente.");
+    }
+
+    @Test
+    @Order(2)
+    public void testDeleteCard() {
+        test = extent.createTest("Eliminar Tarjeta", "Prueba para verificar la funcionalidad de eliminar una tarjeta");
+        test.log(Status.INFO, "Comienza el Test");
+
+        // Navegar a la página de tarjetas
+        driver.get("http://localhost:3000/cards");
+        test.log(Status.INFO, "Navegando a la página de tarjetas");
+
+        // Esperar hasta que el enlace "Mis Tarjetas" sea visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'Mis Tarjetas')]")));
+
+        cards = new Cards(driver);
+        cards.clickCardsLink();
+        test.log(Status.PASS, "Se hizo clic en el enlace de tarjetas");
+
+        // Eliminar la tarjeta con los últimos cuatro dígitos 3456
+        cards.deleteCard(3456);
+        test.log(Status.INFO, "Se hizo clic en el botón para eliminar la tarjeta con los últimos cuatro dígitos 3456");
+
+        boolean cardDeleted = !cardAdded(3456);
+        test.log(cardDeleted ? Status.PASS : Status.FAIL, "La tarjeta con los últimos cuatro dígitos 3456 fue eliminada correctamente.");
     }
 
     public boolean cardAdded(int fourDigits) {

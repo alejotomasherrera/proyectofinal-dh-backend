@@ -26,4 +26,9 @@ public class Dashboard {
     public String obtenerMensajeError() {
         return driver.findElement(By.id("error-message")).getText();
     }
+    // <p class="tw-text-xl tw-font-bold">$&nbsp;1.000</p>
+    // Funcion para detectar si el dinero disponible es correcto recibido por parametro
+    public boolean verificarDineroDisponible(String dinero) {
+        return driver.findElement(dineroDisponiblelbl).getText().equals(dinero);
+    }
 }

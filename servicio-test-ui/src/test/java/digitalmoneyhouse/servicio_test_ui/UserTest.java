@@ -5,8 +5,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import digitalmoneyhouse.servicio_test_ui.extentReports.ExtentFactory;
-import digitalmoneyhouse.servicio_test_ui.page.LoadMoney;
 import digitalmoneyhouse.servicio_test_ui.page.Login;
+import digitalmoneyhouse.servicio_test_ui.page.User;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,11 +15,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoadMoneyTests {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class UserTest {
     private WebDriver driver;
     private Login login;
-    private LoadMoney loadMoney;
-    static ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/load-money-report-extent.html");
+    private User user;
+    static ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/user-report-extent.html");
     static ExtentReports extent;
     private ExtentTest test;
 
@@ -35,7 +37,7 @@ public class LoadMoneyTests {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Iniciar sesión
+        // Iniciar sesión antes de cada prueba
         driver.get("http://localhost:3000/login");
         login = new Login(driver);
         login.ingresarCorreo("alejotomasherrera@hotmail.com");
@@ -48,41 +50,28 @@ public class LoadMoneyTests {
     }
 
     @Test
-    public void testLoadMoney() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        test = extent.createTest("Cargar dinero", "Prueba para verificar la funcionalidad de carga de dinero");
+    public void testUserProfile() {
+        test = extent.createTest("Verificar Perfil de Usuario", "Prueba para verificar el alias y CVU del usuario");
         test.log(Status.INFO, "Comienza el Test");
 
-        driver.get("http://localhost:3000/load-money");
-        test.log(Status.INFO, "Navegando a la página de carga de dinero");
+        driver.get("http://localhost:3000/profile");
+        test.log(Status.INFO, "Navegando a la página de perfil");
 
-        loadMoney = new LoadMoney(driver);
-        loadMoney.clickSelectMethod();
-        test.log(Status.PASS, "Se hizo clic en el método para cargar desde tarjetas");
+        user = new User(driver);
 
-        wait.until(driver -> true);
-        loadMoney.clickSelectLink();
-        test.log(Status.PASS, "Se hizo clic en el enlace para seleccionar el método tarjeta");
+        // Verificar alias
+        String expectedAlias = "estación.alegría.campo";
+        String actualAlias = user.getAlias();
+        assertEquals(expectedAlias, actualAlias, "El alias no es el esperado.");
+        test.log(Status.PASS, "El alias es el esperado: " + actualAlias);
 
-        wait.until(driver -> true);
-        loadMoney.enterMoney("1000");
-        test.log(Status.PASS, "Cantidad de dinero ingresada: 1000");
+        // Verificar CVU
+        String expectedCVU = "0000000000000002473415";
+        String actualCVU = user.getCVU();
+        assertEquals(expectedCVU, actualCVU, "El CVU no es el esperado.");
+        test.log(Status.PASS, "El CVU es el esperado: " + actualCVU);
 
-        loadMoney.clickOutside();
-        test.log(Status.PASS, "Se hizo clic fuera del cuadro de entrada de dinero");
-
-        loadMoney.clickConfirmButton();
-        test.log(Status.PASS, "Se hizo clic en el botón para confirmar la carga de dinero");
-
-        // Espera de 5 segundos
-        wait.until(driver -> true);
-
-        // Snackbar "El dinero fue ingresado correctamente" y terminar el test
-        test.log(Status.PASS, "El dinero fue ingresado correctamente");
-
-        // Terminar test
         test.log(Status.INFO, "Fin del Test");
-
     }
 
     @AfterEach
