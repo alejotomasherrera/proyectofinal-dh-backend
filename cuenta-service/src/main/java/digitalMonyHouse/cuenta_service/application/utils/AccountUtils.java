@@ -14,10 +14,8 @@ import java.util.stream.Collectors;
 @Component
 public class AccountUtils {
 
-    @Value("C:\\Users\\Alejo\\Documents\\proyectofinal-dh-backend\\cuenta-service\\src\\main\\java\\digitalMonyHouse\\cuenta_service\\application\\utils\\palabras_generadas.txt")
-    private String wordsAliasPath;
-
     private final Random random = new Random();
+
 
     public String generateRandomCVU() {
         String cvu = String.format("%022d", random.nextLong() & ((1L << 22 * 4) - 1));
@@ -33,10 +31,12 @@ public class AccountUtils {
 
         return randomWords(words, 3).stream().collect(Collectors.joining("."));
     }
+    
 
     private List<String> loadWordsFromFile() {
         try {
-            return Files.readAllLines(Paths.get(wordsAliasPath));
+            // Carga el archivo desde el classpath
+            return Files.readAllLines(Paths.get(new ClassPathResource("palabras_generadas.txt").getURI()));
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Error loading words file", e);

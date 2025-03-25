@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   mysql:
     image: mysql:8.0
@@ -15,6 +13,19 @@ services:
       - ./db/mysql_data:/var/lib/mysql
     networks:
       - dmh-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "0.5"
+        reservations:
+          memory: 500m
+          cpus: "0.2"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
@@ -29,6 +40,14 @@ services:
       - dmh-network
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "1"
+        reservations:
+          memory: 1g
+          cpus: "0.5"
 
   logstash:
     image: docker.elastic.co/logstash/logstash:8.16.5
@@ -41,9 +60,16 @@ services:
       - dmh-network
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - C:/Users/Alejo/Documents/proyectofinal-dh-backend/logs:/logs
+      - app-logs:/app/logs
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "0.5"
+        reservations:
+          memory: 500m
+          cpus: "0.2"
 
-  # Kibana
   kibana:
     image: docker.elastic.co/kibana/kibana:8.17.3
     container_name: kibana
@@ -54,7 +80,6 @@ services:
     networks:
       - dmh-network
 
-  # Redis
   redis:
     image: redis:7.0
     container_name: redis-digitalMonyHouse
@@ -65,21 +90,57 @@ services:
       - dmh-network
     volumes:
       - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
-# Dockerización del backend
   auth-service:
-    build:
-      context: ./auth-service
-    ports:
-      - "8082:8082"
-    volumes:
-      - ./auth-service:/usr/src/app
+      build:
+        context: ./auth-service
+      ports:
+        - "8082:8082"
+      volumes:
+        - ./auth-service:/usr/src/app
+        - app-logs:/app/logs
+      depends_on:
+        mysql:
+          condition: service_healthy
+        redis:
+          condition: service_healthy
+      deploy:
+        resources:
+          limits:
+            memory: 512m
+            cpus: "0.5"
+          reservations:
+            memory: 256m
+            cpus: "0.2"
 
   config-server:
-    build:
-      context: ./configServer
-    ports:
-      - "8888:8888"
+      build:
+        context: ./configServer
+      ports:
+        - "8888:8888"
+      volumes:
+        - app-logs:/app/logs
+      deploy:
+        resources:
+          limits:
+            memory: 512m
+            cpus: "0.5"
+          reservations:
+            memory: 256m
+            cpus: "0.2"
 
   cuenta-service:
     build:
@@ -88,18 +149,53 @@ services:
       - "8084:8084"
     volumes:
       - ./cuenta-service:/usr/src/app
+      - app-logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
   service-api-gateway:
     build:
       context: ./service-api-gateway
     ports:
       - "8081:8081"
+    volumes:
+      - app-logs:/app/logs
+    depends_on:
+      servicio-eurekaserver:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
-  servicio-eurekaServer:
+  servicio-eurekaserver:
     build:
       context: ./servicio-eurekaServer
     ports:
       - "8761:8761"
+    volumes:
+      - app-logs:/app/logs
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
   servicio-tarjetas:
     build:
@@ -108,6 +204,18 @@ services:
       - "8086:8086"
     volumes:
       - ./servicio-tarjetas:/usr/src/app
+      - app-logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
   servicio-transacciones:
     build:
@@ -116,6 +224,18 @@ services:
       - "8085:8085"
     volumes:
       - ./servicio-transacciones:/usr/src/app
+      - app-logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
   servicio-usuarios:
     build:
@@ -124,12 +244,25 @@ services:
       - "8083:8083"
     volumes:
       - ./servicio-usuarios:/usr/src/app
+      - app-logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+        reservations:
+          memory: 256m
+          cpus: "0.2"
 
 networks:
   dmh-network:
     driver: bridge
 
 volumes:
+  app-logs: # Volumen nombrado para los logs
   mysql-data:
     driver: local
   elasticsearch-data:

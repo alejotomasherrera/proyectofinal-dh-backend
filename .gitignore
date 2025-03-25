@@ -23,26 +23,26 @@
 hs_err_pid*
 replay_pid*
 
+# IntelliJ IDEA files
 .idea/
+*.iml
 
-# Ignorar .settings
+# Eclipse files
 .settings/
-
-# Ignorar .classpath
 .classpath
-
-# Ignorar .project
-
 .project
 
-# Ignorar .metadata
-.metadata/
-
-# Ignorar .DS_Store
+# macOS files
 .DS_Store
-/.idea/
 
-
-# Ignorar caprpeta db
+# Ignorar la carpeta db y lo de adentro
 db/
 db/*
+
+# Ignorar la carpeta logs y lo de adentro
+logs/
+logs/*
+
+# Ignorar la carpeta target y lo de adentro
+target/
+target/*

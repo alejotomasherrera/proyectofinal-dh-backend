@@ -23,9 +23,6 @@ public class AccountService {
     private final AccountUtils accountUtils;
     private final Random random = new Random();
 
-    @Value("C:\\Users\\Usuario-\\Desktop\\exe\\ProyectoFinalDH\\backend\\accounts-server\\src\\main\\java\\com\\example\\accounts_server\\services\\wordsAlias.txt")
-    private String wordsAliasPath;
-
     public AccountService(AccountRepository accountRepository, AccountUtils accountUtils) {
         this.accountRepository = accountRepository;
         this.accountUtils = accountUtils;

@@ -1,17 +1,30 @@
-# Configurar dockerfile de api gatway en puerto 8081
+# Etapa 1: Construcción del código
+FROM maven:3.9.8-eclipse-temurin-17 AS build
 
-FROM openjdk:17-jdk-alpine
-
-# Establecemos el directorio de trabajo dentro del contenedor
+# Definir directorio de trabajo
 WORKDIR /app
 
-# Copiamos el archivo JAR generado por el build de tu servicio
-COPY target/service-api-gateway-0.0.1-SNAPSHOT.jar app.jar
+# Copiar archivos de configuración y dependencias primero para aprovechar caché
+COPY pom.xml .
+RUN mvn dependency:go-offline -U
 
-EXPOSE 8081
+# Copiar el código fuente de la API Gateway
+COPY src ./src
 
+# Compilar la aplicación (sin ejecutar tests para evitar fallos inesperados)
+RUN mvn clean package -DskipTests
 
-# Comando para
-# ejecutar el JAR del microservicio
+# Etapa 2: Imagen final con OpenJDK 17 optimizado
+FROM eclipse-temurin:17-jdk-alpine
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Definir directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copiar el JAR compilado desde la etapa anterior
+COPY --from=build /app/target/service-api-gateway-0.0.1-SNAPSHOT.jar app.jar
+
+# Exponer el puerto del API Gateway
+EXPOSE 8080
+
+# Comando para ejecutar el API Gateway
+CMD ["java", "-jar", "app.jar"]

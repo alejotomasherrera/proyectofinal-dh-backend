@@ -17,61 +17,65 @@ public class GatewayConfig {
     @Autowired
     AuthenticationFilter filter;
 
-    private static final String SECRET_TOKEN = "dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQgb3B0aW9uYWw="; // Define tu token secreto aquí
+    private static final String SECRET_TOKEN = "dGhpcyBpcyBhIHNhbXBsZSBzZWNyZXQgb3B0aW9uYWw=";
 
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
                 // Ruta para el auth-server
+                .route("auth-server-swagger", r -> r.path("/auth-server/auth/swagger-ui.html")
+                        .filters(f -> f
+                                .addRequestHeader("X-Secret-Token", SECRET_TOKEN))
+                        .uri("http://proyectofinal-dh-backend-auth-service-1:8082/auth/swagger-ui.html"))
                 .route("auth-server-logout", r -> r.path("/auth-server/api/logout")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/auth-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8082")) // URI del auth-server
+                        .uri("http://proyectofinal-dh-backend-auth-service-1:8082")) // URI del auth-server
                 .route("auth-server-login", r -> r.path("/auth-server/api/login")
                         .filters(f -> f
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/auth-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8082")) // URI del auth-server
+                        .uri("http://proyectofinal-dh-backend-auth-service-1:8082")) // URI del auth-server
                 // Ruta para el users-server
                 .route("users-server-register", r -> r.path("/users-server/api/register")
                         .filters(f -> f
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/users-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8083")) // URI del users-server
+                        .uri("http://proyectofinal-dh-backend-servicio-usuarios-1:8083")) // URI del users-server
                 .route("users-server", r -> r.path("/users-server/api/user/{id}")
                         .filters(f -> f
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/users-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8083")) // URI del users-server
+                        .uri("http://proyectofinal-dh-backend-servicio-usuarios-1:8083")) // URI del users-server
                 .route("users-server", r -> r.path("/users-server/api/**")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/users-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8083")) // URI del users-server
+                        .uri("http://proyectofinal-dh-backend-servicio-usuarios-1:8083")) // URI del users-server
                 // Ruta para el accounts-server
                 .route("accounts-server", r -> r.path("/accounts-server/api/**")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/accounts-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8084")) // URI del accounts-server
+                        .uri("http://proyectofinal-dh-backend-cuenta-service-1:8084")) // URI del accounts-server
                 // Ruta para el cards-server
                 .route("cards-server", r -> r.path("/cards-server/api/**")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/cards-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8086")) // URI del tarjetas service
+                        .uri("http://proyectofinal-dh-backend-servicio-tarjetas-1:8086")) // URI del tarjetas service
                 // Ruta para el activities-server
                 .route("activities-server", r -> r.path("/activities-server/api/**")
                         .filters(f -> f
                                 .filter(filter) // Aplica el filtro de autenticación
                                 .addRequestHeader("X-Secret-Token", SECRET_TOKEN) // Agrega el encabezado
                                 .rewritePath("/activities-server/(?<segment>.*)", "/${segment}")) // Reescribe la ruta
-                        .uri("http://localhost:8085")) // URI del transacciones service
+                        .uri("http://proyectofinal-dh-backend-servicio-transacciones-1:8085")) // URI del transacciones service
                 .build();
     }
 

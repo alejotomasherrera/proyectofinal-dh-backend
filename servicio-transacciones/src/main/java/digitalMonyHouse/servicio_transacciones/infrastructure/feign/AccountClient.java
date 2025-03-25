@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "cuenta-service", url = "http://localhost:8084/api")
+@FeignClient(name = "cuenta-service")
 public interface AccountClient {
 
     @PutMapping("/accounts/{userId}/balance") // Updated path
