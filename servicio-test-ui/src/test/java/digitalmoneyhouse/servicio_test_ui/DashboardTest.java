@@ -18,6 +18,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.openqa.selenium.By;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DashboardTest {
     private WebDriver driver;
     private Login login;

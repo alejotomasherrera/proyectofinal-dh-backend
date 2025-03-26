@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoadMoneyTests {
     private WebDriver driver;
     private Login login;

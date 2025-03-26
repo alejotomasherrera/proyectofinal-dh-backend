@@ -17,6 +17,7 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RegisterTest {
     private WebDriver driver;
     private WebDriverWait wait;

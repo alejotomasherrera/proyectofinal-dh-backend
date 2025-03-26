@@ -82,14 +82,15 @@ public class GatewayConfig {
     @Bean
     public WebFilter corsWebFilter() {
         return (ServerWebExchange exchange, WebFilterChain chain) -> {
-            if (CorsUtils.isCorsRequest(exchange.getRequest())) {
-                exchange.getResponse().getHeaders().add("Access-Control-Allow-Origin", "*");
-                exchange.getResponse().getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
-                exchange.getResponse().getHeaders().add("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Secret-Token");
-                if (exchange.getRequest().getMethod().name().equals("OPTIONS")) {
-                    exchange.getResponse().setStatusCode(org.springframework.http.HttpStatus.OK);
-                    return exchange.getResponse().setComplete();
-                }
+            exchange.getResponse().getHeaders().add("Access-Control-Allow-Origin", "*");
+            exchange.getResponse().getHeaders().add("Access-Control-Allow-Methods", "*");
+            exchange.getResponse().getHeaders().add("Access-Control-Allow-Headers", "*");
+            exchange.getResponse().getHeaders().add("Access-Control-Expose-Headers", "Authorization, X-Secret-Token");
+            exchange.getResponse().getHeaders().add("Access-Control-Allow-Credentials", "true");
+
+            if (CorsUtils.isPreFlightRequest(exchange.getRequest())) {
+                exchange.getResponse().setStatusCode(org.springframework.http.HttpStatus.OK);
+                return exchange.getResponse().setComplete();
             }
             return chain.filter(exchange);
         };

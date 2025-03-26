@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // import by
 import org.openqa.selenium.By;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginTest {
     private WebDriver driver;
     private Login login;

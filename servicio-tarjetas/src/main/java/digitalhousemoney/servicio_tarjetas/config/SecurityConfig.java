@@ -24,8 +24,8 @@ import java.util.Collections;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String SECRET_HEADER_NAME = "X-Secret-Token";
-    private static final String SECRET_TOKEN = "from-gateway";
+    private static final String SECRET_HEADER_NAME = "X-Secret-Token"; // Changed to match the header used in gateway
+    private static final String SECRET_TOKEN = "from-gateway"; // Define your secret token here
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -35,8 +35,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable()) // Desactivar CSRF
                 .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/api/login").permitAll()
+                        .requestMatchers("/api/logout").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(new SecretTokenValidationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -50,7 +52,7 @@ public class SecurityConfig {
                 throws ServletException, IOException {
 
             String token = request.getHeader(SECRET_HEADER_NAME);
-            System.out.println("Received Secret Token: " + token);
+            System.out.println("Received Secret Token: " + token); // Debugging
 
             if (SECRET_TOKEN.equals(token)) {
                 System.out.println("Secret token is valid, proceeding with request.");

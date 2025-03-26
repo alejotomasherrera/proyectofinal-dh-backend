@@ -1,6 +1,5 @@
 package digitalMonyHouse.servicio_usuarios.config;
 
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,8 +24,8 @@ import java.util.Collections;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String SECRET_HEADER_NAME = "X-Secret-Token";
-    private static final String SECRET_TOKEN = "from-gateway";
+    private static final String SECRET_HEADER_NAME = "X-Secret-Token"; // Changed to match the header used in gateway
+    private static final String SECRET_TOKEN = "from-gateway"; // Define your secret token here
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -38,14 +37,13 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable()) // Desactivar CSRF
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/register").permitAll()
-                        .requestMatchers("/api/users/exists/**").permitAll()
+                        .requestMatchers("/api/login").permitAll()
+                        .requestMatchers("/api/logout").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(new SecretTokenValidationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 
     public static class SecretTokenValidationFilter extends OncePerRequestFilter {
 
@@ -54,7 +52,7 @@ public class SecurityConfig {
                 throws ServletException, IOException {
 
             String token = request.getHeader(SECRET_HEADER_NAME);
-            System.out.println("Received Secret Token: " + token);
+            System.out.println("Received Secret Token: " + token); // Debugging
 
             if (SECRET_TOKEN.equals(token)) {
                 System.out.println("Secret token is valid, proceeding with request.");
