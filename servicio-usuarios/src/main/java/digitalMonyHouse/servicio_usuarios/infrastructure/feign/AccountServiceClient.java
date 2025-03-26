@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "cuenta-service", url = "http://proyectofinal-dh-backend-cuenta-service-1:8084/api")
+@FeignClient(name = "cuenta-service", url = "http://cuenta-service:8084/api")
 public interface AccountServiceClient {
 
     @PostMapping("/create-account")

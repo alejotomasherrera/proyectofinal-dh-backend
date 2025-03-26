@@ -21,11 +21,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1g
-          cpus: "0.5"
+          memory: 512m
+          cpus: "0.25"
         reservations:
-          memory: 500m
-          cpus: "0.2"
+          memory: 256m
+          cpus: "0.1"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
@@ -43,11 +43,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2g
-          cpus: "1"
-        reservations:
           memory: 1g
           cpus: "0.5"
+        reservations:
+          memory: 512m
+          cpus: "0.25"
 
   logstash:
     image: docker.elastic.co/logstash/logstash:8.16.5
@@ -64,11 +64,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1g
-          cpus: "0.5"
+          memory: 512m
+          cpus: "0.25"
         reservations:
-          memory: 500m
-          cpus: "0.2"
+          memory: 256m
+          cpus: "0.1"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.17.3
@@ -79,6 +79,14 @@ services:
       - "5601:5601"
     networks:
       - dmh-network
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.25"
+        reservations:
+          memory: 256m
+          cpus: "0.1"
 
   redis:
     image: redis:7.0
@@ -98,11 +106,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
 
   auth-service:
     build:
@@ -119,6 +127,14 @@ services:
         condition: service_healthy
     networks:
       - dmh-network
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
 
   config-service:
     build:
@@ -129,6 +145,14 @@ services:
       - app-logs:/app/logs
     networks:
       - dmh-network
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
 
   cuenta-service:
     build:
@@ -144,11 +168,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
     networks:
       - dmh-network
 
@@ -162,11 +186,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
     networks:
       - dmh-network
 
@@ -180,11 +204,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
     networks:
       - dmh-network
 
@@ -202,11 +226,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
     networks:
       - dmh-network
 
@@ -224,11 +248,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
+        reservations:
+          memory: 128m
+          cpus: "0.1"
     networks:
       - dmh-network
 
@@ -240,26 +264,26 @@ services:
     volumes:
       - ./servicio-usuarios:/usr/src/app
       - app-logs:/app/logs
+    networks:
+      - dmh-network
     depends_on:
       mysql:
         condition: service_healthy
     deploy:
       resources:
         limits:
-          memory: 512m
-          cpus: "0.5"
-        reservations:
           memory: 256m
           cpus: "0.2"
-    networks:
-      - dmh-network
+        reservations:
+          memory: 128m
+          cpus: "0.1"
 
 networks:
   dmh-network:
     driver: bridge
 
 volumes:
-  app-logs: # Volumen nombrado para los logs
+  app-logs:
   mysql-data:
     driver: local
   elasticsearch-data:
