@@ -77,6 +77,8 @@ El proyecto implementa la gestión de registros utilizando Logstash, Elasticsear
 3.  Navega hasta el directorio raíz del proyecto.
 4.  Ejecuta `docker-compose up redis mysql elasticsearch kibana logstash` para inicializar los servicios.
 5.  Luego ejecuta `docker-compose up` para iniciar todos los microservicios restantes una vez que se encuentren listos los servicios previamente iniciados.
+6. Puede pasar que inicien los microservicios antes de que estén listos los servicios previos, como mysql, redis, eureka o config server, en este caso volve a ejecutar `docker-compose up` una vez que los servicios previos estén listos.
+7. Pueden usar los test de postman para probar los servicios o los test de UI siguiendo el excel de los test manuales.
 
 ## Notas Importantes
 
